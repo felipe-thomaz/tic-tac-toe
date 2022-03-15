@@ -2,6 +2,10 @@ let board = ['','','','','','','','',''];
 let playerTurn = 0;
 let symbols = ['o', 'x'];
 let gameOver = false;
+let player = ["Player 1", "Player 2"]
+let btn = document.getElementById('btnRestart');
+
+
 let winnerMoves = [
   [0,3,6],
   [1,4,7],

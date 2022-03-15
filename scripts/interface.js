@@ -1,3 +1,5 @@
+btn.addEventListener('click', resetGame)
+
 document.addEventListener('DOMContentLoaded', ()=>{
   let squares = document.querySelectorAll(".square");
   squares.forEach((square)=>{
@@ -12,31 +14,22 @@ function handleClick(event){
   if(handleMove(position)){
 
     setTimeout(()=>{
-      alert(`Game Over - O vencedor foi ${playerTurn}`)
+      alert(`Game Over - O vencedor foi ${player[playerTurn]}`)
     }, 10);
 
   };
-  updateSquare();
+  updateSquare(position);
 }
 
 function updateSquare(position){
   let square = document.getElementById(position.toString());
   let symbol = board[position];
-  square.innerHTML = `<div class='${symbol}'></div>`
+  square.innerHTML = `<div class='${symbol}'></div>`;
 }
+function resetGame(){
+  board = ['','','','','','','','',''];
+  playerTurn = 0;
+  gameOver = false;
 
-function updateSquares(){
-
-  let squares = document.querySelectorAll(".square");
-
-  squares.forEach((square)=>{
-    let position = square.id;
-    let symbol = board[position];
-
-    if(symbol != ''){
-      square.innerHTML = `<div class='${symbol}'></div>`
-    }
-
-  })
-
+  document.querySelectorAll(".square").forEach(square => square.innerHTML = '')
 }
